@@ -1,0 +1,237 @@
+{% extends 'template.html' %} {% block content %}
+
+<script>
+  //<!--* ---------------------PARA EL ORDENAMIENTO----------------- -->
+
+  // Para el ordenamiento
+  $(document).ready(() => {
+    $("#ordenarForm").submit((event) => {
+      event.preventDefault();
+      create();
+    });
+  });
+
+  const create = () => {
+    const algoritmoValue = $("#algoritmo").val();
+    const ordenValue = $("#orden").val();
+    const attrValue = $("#atributo").val();
+
+    const url = `/usuarios/${algoritmoValue}/${attrValue}/${ordenValue}`;
+
+    $.ajax({
+      method: "GET",
+      url: url,
+      dataType: "json",
+      success: (data) => {
+        console.log(data);
+        if (data.code == 200) {
+          let html = "";
+          $.each(data.data, (i, item) => {
+            html += '<tr class="text-white">';
+            html += '<td class="py-2 px-4 text-center">' + item.id + "</td>";
+            html +=
+              '<td class="py-2 px-4 text-center">' +
+              item.nombre_usuario +
+              "</td>";
+            html +=
+              '<td class="py-2 px-4 text-center">' +
+              item.apellido_usuario +
+              "</td>";
+            html += '<td class="py-2 px-4 text-center">' + item.edad + "</td>";
+            html += '<td class="py-2 px-4 text-center">' + item.email + "</td>";
+            html += '<td class="py-2 px-4 text-center">';
+            html +=
+              '<a href="/usuarios/lista_codigos/' +
+              item.id +
+              '" class="inline-block bg-gradient-to-r from-red-800 via-red-800 to-pink-800 hover:from-red-500 hover:to-black-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out">';
+            html += "Comandos</a>";
+            html += "</td>";
+            html += "</tr>";
+          });
+          $("#tabla tbody").html(html);
+        } else {
+          alert("Error al obtener datos");
+        }
+      },
+    });
+  };
+
+  //<!--* -----------------------PARA LA BUSQUEDA------------------- -->
+
+  $(document).ready(() => {
+    $("#buscarForm").submit((event) => {
+      event.preventDefault();
+      create2();
+    });
+  });
+
+  const create2 = () => {
+    const atributo_Busqueda = $("#atributoBusqueda").val();
+    const tipo_Busqueda = $("#tipoBusqueda").val();
+    const valor_Busqueda = $("#valorBusqueda").val();
+
+    const url = `/usuarios/busqueda/${tipo_Busqueda}/${atributo_Busqueda}/${valor_Busqueda}`;
+
+    $.ajax({
+      method: "GET",
+      url: url,
+      dataType: "json",
+      success: (data) => {
+        console.log(data);
+        if (data.code == 200) {
+          let html = "";
+          $.each(data.data, (i, item) => {
+            html += '<tr class="text-white">';
+            html += '<td class="py-2 px-4 text-center">' + item.id + "</td>";
+            html +=
+              '<td class="py-2 px-4 text-center">' +
+              item.nombre_usuario +
+              "</td>";
+            html +=
+              '<td class="py-2 px-4 text-center">' +
+              item.apellido_usuario +
+              "</td>";
+            html += '<td class="py-2 px-4 text-center">' + item.edad + "</td>";
+            html += '<td class="py-2 px-4 text-center">' + item.email + "</td>";
+            html += '<td class="py-2 px-4 text-center">';
+            html +=
+              '<a href="/usuarios/lista_codigos/' +
+              item.id +
+              '" class="inline-block bg-gradient-to-r from-red-800 via-red-800 to-pink-800 hover:from-red-500 hover:to-black-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out">';
+            html += "Comandos</a>";
+            html += "</td>";
+            html += "</tr>";
+          });
+          $("#tabla tbody").html(html);
+        } else {
+          alert("Error al obtener datos");
+        }
+      },
+    });
+  };
+</script>
+
+<h2 class="font-bold text-3xl text-white text-center">Lista de Usuarios</h2>
+<div class="booking-form-body">
+  <div class="py-3 flex">
+    <div class="w-1/3">
+      <a
+        href="/usuarios/ver"
+        class="inline-block bg-gradient-to-r from-purple-800 to-pink-800 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+      >
+        Agregar Usuario Nuevo
+      </a>
+    </div>
+    <div class="w-2/3 bg-gray-800 rounded-lg">
+      <div class="flex justify-end space-x-4 mr-5 mt-3">
+        <!--* Primer formulario -->
+        <form id="ordenarForm">
+          <select id="algoritmo" name="algoritmo" class="form-select w-40 mt-1">
+            <option value="shell">Shell Sort</option>
+            <option value="merge">Merge Sort</option>
+            <option value="quick">Quick Sort</option>
+          </select>
+
+          <select id="orden" name="orden" class="form-select w-40 mt-1">
+            <option value="1">Ascendente</option>
+            <option value="2">Descendente</option>
+          </select>
+
+          <select id="atributo" name="atributo" class="form-select w-40 mt-1">
+            <option value="_nombre_usuario">Nombre</option>
+            <option value="_apellido_usuario">Apellido</option>
+            <option value="_edad">Edad</option>
+            <option value="_email">Email</option>
+          </select>
+
+          <button
+            type="submit"
+            class="bg-indigo-600 rounded-lg text-white font-bold p-2"
+            id="ordenarBtn"
+          >
+            ORDENAR
+          </button>
+        </form>
+      </div>
+
+      <!--* Segundo formulario -->
+      <div class="flex justify-end space-x-4 mt-4 mr-6 mb-4">
+        <form id="buscarForm" action="/usuarios/busqueda" method="GET">
+          <select
+            id="atributoBusqueda"
+            name="atributo"
+            class="form-select w-40 mt-1"
+          >
+            <option value="_nombre_usuario">Nombre</option>
+            <option value="_apellido_usuario">Apellido</option>
+            <option value="_edad">Edad</option>
+            <option value="_email">Email</option>
+          </select>
+
+          <select
+            id="tipoBusqueda"
+            name="tipo_busqueda"
+            class="form-select w-40 mt-1"
+          >
+            <option value="1">Búsqueda Lineal Binaria</option>
+            <option value="2">Búsqueda Binaria</option>
+          </select>
+
+          <input
+            type="text"
+            id="valorBusqueda"
+            name="valor_busqueda"
+            placeholder="Valor a buscar"
+            class="form-input w-40 mt-1"
+          />
+
+          <button
+            type="submit"
+            class="bg-indigo-600 rounded-lg text-white font-bold p-2"
+            id="buscarBtn"
+          >
+            BUSCAR
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="overflow-x-auto">
+    <!--* Tabla de datos -->
+    <table
+      id="tabla"
+      class="w-full whitespace-nowrap bg-black shadow-md, border collapse"
+    >
+      <thead class="text-white bg-gradient-to-r from-red-800 to-purple-800">
+        <tr>
+          <th class="py-2 px-4 text-center">Nro</th>
+          <th class="py-2 px-4 text-center">Usuario</th>
+          <th class="py-2 px-4 text-center">Apellido</th>
+          <th class="py-2 px-4 text-center">Edad</th>
+          <th class="py-2 px-4 text-center">Email</th>
+          <th class="py-2 px-4 text-center">Codigos</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in lista %}
+        <tr class="text-white">
+          <td class="py-2 px-4 text-center">{{ item.id }}</td>
+          <td class="py-2 px-4 text-center">{{ item.nombre_usuario }}</td>
+          <td class="py-2 px-4 text-center">{{ item.apellido_usuario }}</td>
+          <td class="py-2 px-4 text-center">{{ item.edad }}</td>
+          <td class="py-2 px-4 text-center">{{ item.email }}</td>
+          <td class="py-2 px-4 text-center">
+            <a
+              href="/usuarios/lista_codigos/{{ item.id }}"
+              class="inline-block bg-gradient-to-r from-red-800 via-red-800 to-pink-800 hover:from-red-500 hover:to-black-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+            >
+              Comandos</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

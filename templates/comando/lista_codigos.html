@@ -1,0 +1,40 @@
+{% extends 'template.html' %}
+{% block content %}
+<h2 class="font-bold text-3xl text-white text-center">Lista de Comandos de {{nombre}}</h2>
+<div class="booking-form-body">
+  <div class="py-3">
+    <!-- <p>
+      {{user_id}}
+    </p> -->
+    <a href="/usuarios"
+      class="inline-block bg-gradient-to-r from-purple-800 to-pink-800 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out">
+      Regresar
+    </a>
+    <a href="/usuarios/ver/codigo/{{user_id}}"
+      class="inline-block bg-gradient-to-r from-purple-800 to-pink-800 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out">
+      Agregar Comando
+    </a>
+  </div>
+  <div class="overflow-x-auto">
+    <!-- <input type="hidden" name="id" value="{{ data._id }}" /> -->
+    <table id="tabla" class="w-full whitespace-nowrap bg-black shadow-md, border collapse">
+      <thead class="text-white bg-gradient-to-r from-red-800 to-purple-800">
+        <tr>
+          <th class="py-2 px-4 text-center">Nro</th>
+          <th class="py-2 px-4 text-center">Codigo</th>
+          <th class="py-2 px-4 text-center">Fecha Creacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for command in data %}
+        <tr class="text-white">
+          <td class="py-2 px-4 text-center">{{ command.id }}</td>
+          <td class="py-2 px-4 text-center">{{ command.comando }}</td>
+          <td class="py-2 px-4 text-center">{{ command.fecha_creacion }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

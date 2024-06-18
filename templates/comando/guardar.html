@@ -1,0 +1,28 @@
+{% extends 'template.html' %} 
+{% block content %}
+
+<h2 class="text-white font-bold text-center text-3xl">Agregar Usuario</h2>
+<div class="booking-form-body">
+  <div class="py-4">
+    <a href="/usuarios" class="inline-block bg-gradient-to-r from-purple-800 to-pink-800 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out">
+      Ir a Listar
+    </a>
+  </div>
+  <form id="form" action="/usuarios/guardar" method="post" role="form">
+    <div class="gap-4 text-center bg-gray-800 py-8 rounded-lg">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 m-4">
+        <input type="text" name="nombre_usuario" id="nombre_usuario" class="form-input" placeholder="Nombre Usuario" required />
+        <input type="text" name="apellido_usuario" id="apellido_usuario" class="form-input" placeholder="Apellido Usuario" required />
+        <input type="text" name="edad" id="edad" class="form-input" placeholder="Edad" required />
+        <input type="text" name="email" id="email" class="form-input" placeholder="Email" required />
+      </div>
+      <div class="text-center col-span-2">
+        <button type="submit" class="inline-block bg-gradient-to-r from-red-800 via-red-800 to-pink-800 hover:from-red-500 hover:to-black-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

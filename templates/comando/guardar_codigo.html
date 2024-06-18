@@ -1,0 +1,26 @@
+{% extends 'template.html' %} {% block content %}
+
+<h2 class="text-white font-bold text-center text-3xl">Agregar Codigo</h2>
+<div class="booking-form-body">
+  <div class="py-4">
+    <p>
+      {{user_id}}
+    </p>
+    <a href=/usuarios/lista_codigos/{{user_id}}
+    class="inline-block bg-gradient-to-r from-purple-800 to-pink-800 hover:from-purple-500 hover:to-pink-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out">
+      Ir a Listar
+    </a>
+  </div>
+  <form id="form" action="/usuarios/comando_guardar/{{user_id}}" method="post" role="form">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-center bg-gray-800 py-8">
+      <div>
+        <input type="text" name="nombre_comando" id="nombre_comando" class="form-input" placeholder="Nombre Comando" required />
+      </div>
+      <div class="text-center col-span-2">
+        <button type="submit"
+          class="inline-block bg-gradient-to-r from-red-800 via-red-800 to-pink-800 hover:from-red-500 hover:to-black-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out">Guardar</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %} 
