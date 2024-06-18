@@ -13290,3 +13290,84 @@
 
 
 04:54:28 PM: INFO [_internal.py:97]  * Debugger PIN: 146-827-031
+
+
+05:16:15 PM: INFO [_internal.py:97] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.7:5000
+
+
+05:16:15 PM: INFO [_internal.py:97] [33mPress CTRL+C to quit[0m
+
+
+05:16:15 PM: INFO [_internal.py:97]  * Restarting with stat
+
+
+05:16:16 PM: WARNING [_internal.py:97]  * Debugger is active!
+
+
+05:16:16 PM: INFO [_internal.py:97]  * Debugger PIN: 689-916-911
+
+
+05:16:18 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:16:18] "GET /usuarios HTTP/1.1" 200 -
+
+
+05:16:19 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:16:19] "GET /static/imgs/header.png HTTP/1.1" 200 -
+
+
+05:16:33 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:16:33] "GET /usuarios/ver HTTP/1.1" 200 -
+
+
+05:16:33 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:16:33] "[36mGET /static/imgs/header.png HTTP/1.1[0m" 304 -
+
+
+05:16:46 PM: DEBUG [usuarioDaoControl.py:71] [32mError en save es: 'NoneType' object has no attribute '_length'[39m
+
+
+05:16:46 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:16:46] "[32mPOST /usuarios/guardar HTTP/1.1[0m" 302 -
+
+
+05:16:47 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:16:47] "GET /usuarios HTTP/1.1" 200 -
+
+
+05:16:47 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:16:47] "[36mGET /static/imgs/header.png HTTP/1.1[0m" 304 -
+
+
+05:20:09 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:20:09] "GET /usuarios HTTP/1.1" 200 -
+
+
+05:20:10 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:20:10] "[36mGET /static/imgs/header.png HTTP/1.1[0m" 304 -
+
+
+05:20:16 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:20:16] "GET /usuarios/ver HTTP/1.1" 200 -
+
+
+05:20:16 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:20:16] "[36mGET /static/imgs/header.png HTTP/1.1[0m" 304 -
+
+
+05:20:28 PM: DEBUG [usuarioDaoControl.py:66] [31miD: 15[39m
+
+
+05:20:28 PM: INFO [usuarioDaoControl.py:68] [34mnuevo id = 16[39m
+
+
+05:20:28 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:20:28] "[32mPOST /usuarios/guardar HTTP/1.1[0m" 302 -
+
+
+05:20:29 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:20:29] "GET /usuarios HTTP/1.1" 200 -
+
+
+05:20:29 PM: INFO [_internal.py:97] 127.0.0.1 - - [18/Jun/2024 17:20:29] "[36mGET /static/imgs/header.png HTTP/1.1[0m" 304 -
+
+
+05:26:46 PM: INFO [_internal.py:97]  * Detected change in 'C:\\Users\\Jatm\\Desktop\\Practica2\\model\\usuario.py', reloading
+
+
+05:26:46 PM: INFO [_internal.py:97]  * Restarting with stat
+
+
+05:26:46 PM: WARNING [_internal.py:97]  * Debugger is active!
+
+
+05:26:46 PM: INFO [_internal.py:97]  * Debugger PIN: 689-916-911

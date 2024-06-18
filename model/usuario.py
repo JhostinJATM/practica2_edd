@@ -8,7 +8,6 @@ class Usuario:
         self.__apellido_usuario = ""
         self.__edad = 0
         self.__email = ""
-        # self.__direccion = ""
         self.__comandos = LinkedList()
 
     @property
@@ -51,14 +50,6 @@ class Usuario:
     def _email(self, value):
         self.__email = value
 
-    # @property
-    # def _direccion(self):
-    #     return self.__direccion
-
-    # @_direccion.setter
-    # def _direccion(self, value):
-    #     self.__direccion = value
-
     @property
     def _comandos(self):
         return self.__comandos
@@ -77,7 +68,7 @@ class Usuario:
             comando = self._comandos.get(i)
             fecha_creacion = comando.get("fecha_creacion", "")
             if fecha_creacion:
-                fecha_creacion = fecha_creacion.split(".")[0]  # Esto es para eliminar los microsegundos
+                fecha_creacion = fecha_creacion.split(".")[0] 
             comandos_serializados.append({
                 "id": comando["id"],
                 "nombre_comando": comando["nombre_comando"],
@@ -90,25 +81,8 @@ class Usuario:
             "apellido_usuario": self._apellido_usuario,
             "edad": self._edad,
             "email": self._email,
-            # "direccion": self._direccion,
             "comandos": comandos_serializados            
         }
-
-#? No borrar para stack
-#? ---------------------------------------------------------------------------
-    # @staticmethod
-    # def deserializar(data):
-    #     usuario = Usuario()
-    #     usuario._id = data["id"]
-    #     usuario._nombre_usuario = data["nombre_usuario"]
-    #     # usuario._apellido_usuario = data["apellido_usuario"]
-    #     # usuario._edad = data["edad"]
-    #     # usuario._email = data["email"]
-    #     # usuario._direccion = data["direccion"]
-    #     for comando in data["comandos"]:
-    #         usuario._comandos.push(comando)
-    #     return usuario
-#? ---------------------------------------------------------------------------
 
     @staticmethod
     def deserializar(data):
